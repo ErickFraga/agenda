@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import { toast } from 'sonner';
-import { Scissors, CalendarCheck, ArrowLeft, Check } from 'lucide-react';
+import { Scissors, CalendarCheck, ArrowLeft, Check, MessageSquare } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BarberList } from '@/components/BarberList';
@@ -109,12 +110,22 @@ export function BookingPage() {
         <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/20">
             <div className="container max-w-2xl mx-auto px-4 py-8">
                 {/* Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 relative">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground mb-4 shadow-lg">
                         <Scissors className="w-8 h-8" />
                     </div>
                     <h1 className="text-3xl font-bold mb-2">Barbearia</h1>
                     <p className="text-muted-foreground">Agende seu horário</p>
+
+                    <Link to="/chat">
+                        <Button
+                            variant="outline"
+                            className="mt-4 rounded-full border-primary/20 hover:bg-primary/5 text-primary gap-2"
+                        >
+                            <MessageSquare className="w-4 h-4" />
+                            Agendar pelo Chat (IA)
+                        </Button>
+                    </Link>
                 </div>
 
                 {step !== 'success' && step !== 'barber' && (

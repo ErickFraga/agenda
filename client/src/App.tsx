@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
 import { BookingPage } from '@/pages/BookingPage';
 import { AdminPage } from '@/pages/AdminPage';
+import { ChatPage } from '@/pages/ChatPage';
 import './index.css';
 
 const queryClient = new QueryClient({
@@ -20,6 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<BookingPage />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
