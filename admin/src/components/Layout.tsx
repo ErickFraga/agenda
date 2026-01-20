@@ -1,9 +1,9 @@
-import { NavLink, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import shopConfig from '@root/barbershop.json';
 import { useState } from 'react';
-import { LayoutDashboard, Users, CalendarDays, Settings, Scissors, Calendar, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, CalendarDays, Settings, Calendar, Menu, X, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { isSupabaseConfigured } from '@/lib/supabase';
+import { isSupabaseConfigured, supabase } from '@/lib/supabase';
 
 const navItems = [
     { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
@@ -87,13 +87,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     ))}
                 </nav>
 
-                <div className="p-4 border-t">
+                <div className="p-4 border-t space-y-4">
                     <div className={cn(
                         'px-3 py-2 rounded-lg text-xs',
                         isSupabaseConfigured ? 'bg-success/20 text-success' : 'bg-warning/20 text-warning'
                     )}>
                         {isSupabaseConfigured ? '✓ Supabase conectado' : '⚠ Modo demo (sem banco)'}
                     </div>
+
+                    <button
+                        onClick={async () => {
+                            await supabase.auth.signOut();
+                        }}
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-destructive hover:bg-destructive/10 w-full transition-colors"
+                    >
+                        <LogOut className="w-5 h-5" />
+                        Sair
+                    </button>
                 </div>
             </aside>
 
