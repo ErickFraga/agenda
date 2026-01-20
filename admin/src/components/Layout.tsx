@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
+import shopConfig from '@root/barbershop.json';
 import { LayoutDashboard, Users, CalendarDays, Settings, Scissors, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { isSupabaseConfigured } from '@/lib/supabase';
@@ -17,13 +18,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
             {/* Sidebar */}
             <aside className="w-64 bg-card border-r flex flex-col">
                 <div className="p-6 border-b">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                            <Scissors className="w-5 h-5 text-primary-foreground" />
+                    <div className="flex items-center gap-2 mb-8 px-2">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 overflow-hidden border border-primary/20">
+                            <img src={shopConfig.theme.dark} alt="Logo" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h1 className="font-bold text-lg">Barbearia</h1>
-                            <p className="text-xs text-muted-foreground">Painel Admin</p>
+                            <h1 className="font-bold text-lg">{shopConfig.name}</h1>
+                            <span className="text-xs text-muted-foreground">Painel Admin</span>
                         </div>
                     </div>
                 </div>

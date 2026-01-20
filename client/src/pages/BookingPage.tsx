@@ -11,6 +11,7 @@ import { BookingForm } from '@/components/BookingForm';
 import { useBarbers, useAppointmentsByDateAndBarber, useCreateAppointment } from '@/hooks/useApi';
 import { generateTimeSlots, formatDateForDB, formatDate } from '@/lib/date-utils';
 import type { Barber } from '@/types/database';
+import shopConfig from '@root/barbershop.json';
 
 type Step = 'barber' | 'date' | 'time' | 'confirm' | 'success';
 
@@ -111,10 +112,15 @@ export function BookingPage() {
             <div className="container max-w-2xl mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="text-center mb-8 relative">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground mb-4 shadow-lg">
-                        <Scissors className="w-8 h-8" />
+                    <div className="inline-flex items-center justify-center w-24 h-24 rounded-full overflow-hidden bg-background mb-4 shadow-lg border-2 border-primary/20">
+                        {/* Usando logo-dark por padrão pois o tema é geralmente escuro ou híbrido */}
+                        <img
+                            src={shopConfig.theme.dark}
+                            alt={shopConfig.name}
+                            className="w-full h-full object-cover"
+                        />
                     </div>
-                    <h1 className="text-3xl font-bold mb-2">Barbearia</h1>
+                    <h1 className="text-3xl font-bold mb-2">{shopConfig.name}</h1>
                     <p className="text-muted-foreground">Agende seu horário</p>
 
                     <Link to="/chat">

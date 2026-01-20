@@ -1,0 +1,7 @@
+{
+    "name": "Viking Barber",
+    "theme": {
+        "light": "/logo-light.jpg",
+        "dark": "/logo-dark.jpg"
+    }
+}
