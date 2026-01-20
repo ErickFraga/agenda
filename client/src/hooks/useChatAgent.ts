@@ -2,8 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { useBarbers, useCreateAppointment, useAppointmentsByDateAndBarber } from '@/hooks/useApi';
 import { generateTimeSlots, formatDateForDB, isWorkDay } from '@/lib/date-utils';
 import type { Message } from '@/components/chat/ChatComponents';
-import type { Barber } from '@/types/database';
-import { parse, addDays, nextDay } from 'date-fns';
+import { addDays, nextDay } from 'date-fns';
 
 type ChatState =
     | 'GREETING'

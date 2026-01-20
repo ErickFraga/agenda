@@ -12,6 +12,8 @@ const MOCK_BARBERS: Barber[] = [
         work_end_time: '18:00',
         work_days: [1, 2, 3, 4, 5, 6],
         created_at: new Date().toISOString(),
+        slot_duration: 45,
+        breaks: [],
     },
     {
         id: '2',
@@ -21,6 +23,8 @@ const MOCK_BARBERS: Barber[] = [
         work_end_time: '19:00',
         work_days: [1, 2, 3, 4, 5],
         created_at: new Date().toISOString(),
+        slot_duration: 30,
+        breaks: [{ start: '13:00', end: '14:00' }],
     },
     {
         id: '3',
@@ -30,6 +34,8 @@ const MOCK_BARBERS: Barber[] = [
         work_end_time: '17:00',
         work_days: [2, 3, 4, 5, 6],
         created_at: new Date().toISOString(),
+        slot_duration: 60,
+        breaks: [],
     },
 ];
 

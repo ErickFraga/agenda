@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import { toast } from 'sonner';
-import { Scissors, CalendarCheck, ArrowLeft, Check, MessageSquare } from 'lucide-react';
+import { CalendarCheck, ArrowLeft, Check, MessageSquare } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BarberList } from '@/components/BarberList';
