@@ -81,7 +81,7 @@ export function CalendarPage() {
     };
 
     return (
-        <div className="p-8">
+        <div className="p-4 md:p-8">
             <div className="flex items-center justify-between mb-8">
                 <div>
                     <h1 className="text-2xl font-bold">Calendário</h1>
@@ -151,7 +151,7 @@ export function CalendarPage() {
                                             key={i}
                                             onClick={() => setSelectedDate(day)}
                                             className={cn(
-                                                'relative min-h-[80px] p-1 rounded-lg border transition-all text-left',
+                                                'relative min-h-[80px] p-1 rounded-lg border transition-all text-left flex flex-col items-start justify-start gap-1',
                                                 !isCurrentMonth && 'opacity-40',
                                                 isSelected && 'ring-2 ring-primary',
                                                 isToday(day) && 'bg-primary/10',

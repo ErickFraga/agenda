@@ -240,7 +240,7 @@ export function AppointmentsPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex gap-1">
+                                    <div className="flex flex-wrap gap-1 justify-end content-start min-w-[80px]">
                                         {apt.status === 'scheduled' && (
                                             <>
                                                 <Button variant="ghost" size="icon" onClick={() => openReschedule(apt)} title="Remarcar" className="text-warning">

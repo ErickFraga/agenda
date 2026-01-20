@@ -16,7 +16,7 @@ export function ChatPage() {
     }, [messages, isTyping]);
 
     return (
-        <div className="flex flex-col h-screen bg-background">
+        <div className="flex flex-col h-[100dvh] bg-background">
             {/* Header */}
             <header className="flex items-center p-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10">
                 <Link to="/">
