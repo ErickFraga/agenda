@@ -35,7 +35,9 @@ export function BookingPage() {
             selectedBarber.work_start_time,
             selectedBarber.work_end_time,
             appointments,
-            selectedDate
+            selectedDate,
+            selectedBarber.slot_duration || 45,
+            selectedBarber.breaks || []
         );
     }, [selectedBarber, selectedDate, appointments]);
 
@@ -96,7 +98,7 @@ export function BookingPage() {
                 <div
                     key={s}
                     className={`w-2 h-2 rounded-full transition-all ${step === s ? 'w-8 bg-primary' :
-                            ['barber', 'date', 'time', 'confirm'].indexOf(step) > i ? 'bg-primary' : 'bg-muted'
+                        ['barber', 'date', 'time', 'confirm'].indexOf(step) > i ? 'bg-primary' : 'bg-muted'
                         }`}
                 />
             ))}

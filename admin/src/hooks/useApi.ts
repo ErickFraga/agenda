@@ -4,9 +4,9 @@ import type { Barber, Appointment, CreateBarber, UpdateBarber, CreateAppointment
 
 // Mock data para modo demo
 const MOCK_BARBERS: Barber[] = [
-    { id: '1', name: 'João Silva', avatar_url: null, work_start_time: '09:00', work_end_time: '18:00', work_days: [1, 2, 3, 4, 5, 6], created_at: new Date().toISOString() },
-    { id: '2', name: 'Carlos Santos', avatar_url: null, work_start_time: '10:00', work_end_time: '19:00', work_days: [1, 2, 3, 4, 5], created_at: new Date().toISOString() },
-    { id: '3', name: 'Miguel Oliveira', avatar_url: null, work_start_time: '08:00', work_end_time: '17:00', work_days: [2, 3, 4, 5, 6], created_at: new Date().toISOString() },
+    { id: '1', name: 'João Silva', avatar_url: null, work_start_time: '09:00', work_end_time: '18:00', work_days: [1, 2, 3, 4, 5, 6], slot_duration: 45, breaks: [{ start: '12:00', end: '13:00' }], created_at: new Date().toISOString() },
+    { id: '2', name: 'Carlos Santos', avatar_url: null, work_start_time: '10:00', work_end_time: '19:00', work_days: [1, 2, 3, 4, 5], slot_duration: 45, breaks: [], created_at: new Date().toISOString() },
+    { id: '3', name: 'Miguel Oliveira', avatar_url: null, work_start_time: '08:00', work_end_time: '17:00', work_days: [2, 3, 4, 5, 6], slot_duration: 60, breaks: [{ start: '12:00', end: '14:00' }], created_at: new Date().toISOString() },
 ];
 
 let mockAppointments: Appointment[] = [
@@ -33,7 +33,14 @@ export function useCreateBarber() {
     return useMutation({
         mutationFn: async (barber: CreateBarber) => {
             if (!isSupabaseConfigured) {
-                const newBarber: Barber = { id: Date.now().toString(), ...barber, avatar_url: barber.avatar_url ?? null, created_at: new Date().toISOString() };
+                const newBarber: Barber = {
+                    id: Date.now().toString(),
+                    ...barber,
+                    avatar_url: barber.avatar_url ?? null,
+                    slot_duration: barber.slot_duration ?? 45,
+                    breaks: barber.breaks ?? [],
+                    created_at: new Date().toISOString()
+                };
                 MOCK_BARBERS.push(newBarber);
                 return newBarber;
             }

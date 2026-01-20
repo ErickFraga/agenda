@@ -2,6 +2,11 @@
 
 export type AppointmentStatus = 'scheduled' | 'canceled' | 'completed';
 
+export interface BreakTime {
+    start: string; // HH:mm
+    end: string;   // HH:mm
+}
+
 export interface Barber {
     id: string;
     name: string;
@@ -9,6 +14,8 @@ export interface Barber {
     work_start_time: string;
     work_end_time: string;
     work_days: number[];
+    slot_duration: number; // duração em minutos
+    breaks: BreakTime[];   // intervalos/pausas
     created_at: string;
 }
 
@@ -30,6 +37,8 @@ export interface CreateBarber {
     work_start_time: string;
     work_end_time: string;
     work_days: number[];
+    slot_duration?: number;
+    breaks?: BreakTime[];
 }
 
 export interface UpdateBarber extends Partial<CreateBarber> {
